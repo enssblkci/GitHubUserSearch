@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "888396090868",
+    "firebase_url": "https://ingbankinginterview.firebaseio.com",
+    "project_id": "ingbankinginterview",
+    "storage_bucket": "ingbankinginterview.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888396090868:android:93504a97774f9180d47da1",
+        "android_client_info": {
+          "package_name": "com.ing.mobile.githubusersearch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888396090868-osp43f65llbpblf651gpbhm8thmet5ul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5bcKDmuX3LFH54wXAiYpFNLbLX-_Sl7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888396090868-osp43f65llbpblf651gpbhm8thmet5ul.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.ing.mobile.githubusersearch.ui.viewmodel.PostsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constRootView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/include_toolbar" layout="@layout/toolbar"/>
+
+        <LinearLayout
+            android:id="@+id/linearSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/medium_point"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/searchEdt"
+                android:layout_weight="1"
+                android:background="@drawable/search_view_bg"
+                android:layout_width="0dp"
+                style="@style/SearchContainerStyle"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.onChanged(text)}"
+                android:layout_height="@dimen/search_container_view_height"
+                android:drawableStart="@drawable/ic_search"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/orange"
+                android:layout_marginStart="@dimen/medium_point"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:onClick="@{()->viewModel.searchOnClickListener()}"
+                android:text="@string/search"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/resultRecycler"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearSearch"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/item_search_view"
+            android:layout_width="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_height="0dp" />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/constRootView" />
+        <LinearLayout
+            android:id="@+id/linearResultNotFound"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearSearch">
+
+            <TextView
+                android:id="@+id/textNotFound"
+                android:text="@string/search_not_found"
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                style="@style/GenericTextStyle"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:src="@drawable/ic_not_found"
+                />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

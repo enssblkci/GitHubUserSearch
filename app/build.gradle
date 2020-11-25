@@ -1,0 +1,85 @@
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+    defaultConfig {
+        applicationId versions.applicationID
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.target
+        versionCode versions.code
+        versionName versions.name
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+        buildConfigField("String", "BASE_URL", '"https://api.github.com/"')
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = versions.jvmTarget
+    }
+    dataBinding {
+        enabled true
+    }
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation libraries.ktxCore
+    implementation libraries.appCompat
+    implementation libraries.material
+    implementation libraries.constraintLayout
+    implementation libraries.junit
+    implementation libraries.extJunit
+    implementation libraries.espresso
+    implementation libraries.okhttp
+    implementation libraries.retrofit
+    implementation libraries.retrofitGson
+
+    implementation libraries.lifecycleExtensions
+    implementation libraries.lifecycleRuntime
+    implementation libraries.lifecycleCompiler
+    implementation libraries.lifecycleLiveData
+    implementation libraries.lifecycleViewModel
+
+    implementation libraries.kotlinxCoroutines
+    implementation libraries.kotlinxCoroutinesAndroid
+    implementation libraries.glide
+
+    implementation libraries.koinCore
+    implementation libraries.koinAndroid
+    implementation libraries.koinViewmodel
+    implementation libraries.koinArchitecture
+
+    implementation libraries.cardView
+
+    implementation libraries.navigationFragment
+    implementation libraries.navigationUI
+    implementation libraries.legacySupport
+
+    kapt libraries.roomCompiler
+    implementation libraries.roomRuntime
+    implementation libraries.supportRecyclerView
+    implementation libraries.multidex
+
+
+
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="search_container_view_height">48dp</dimen>
+    <dimen name="small_point">4dp</dimen>
+    <dimen name="medium_point">8dp</dimen>
+    <dimen name="regular_point">16dp</dimen>
+    <dimen name="large_point">24dp</dimen>
+    <dimen name="x_large_point">48dp</dimen>
+    <dimen name="xx_large_point">56dp</dimen>
+
+</resources>

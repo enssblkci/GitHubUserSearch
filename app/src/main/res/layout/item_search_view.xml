@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="userItem"
+            type="com.ing.mobile.githubusersearch.model.search.GitHubUser" />
+
+       <variable
+           name="searchHandler"
+           type="com.ing.mobile.githubusersearch.ui.adapter.UserSearchHandler" />
+    </data>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x_large_point"
+        android:layout_margin="@dimen/medium_point"
+        android:elevation="@dimen/small_point">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/medium_point"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <TextView
+                android:id="@+id/textUserName"
+                android:onClick="@{()-> searchHandler.selectedItem(userItem)}"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/large_point"
+                android:layout_weight="1.6"
+                android:text="@{userItem.owner.userName}"
+                style="@style/SearchItemStyle"
+                />
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="0.4">
+                <ImageView
+                    android:id="@+id/imageFavorite"
+                    android:layout_width="@dimen/large_point"
+                    android:layout_height="@dimen/large_point"
+                    android:src="@drawable/ic_favorite"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
